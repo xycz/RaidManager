@@ -5,98 +5,153 @@ $j = 0;
 @endphp
 
 @foreach ($raidRoster as $rosterCharacter)
-            @php unset($availableCharacters[($rosterCharacter->character_id)-1]) @endphp
+    @php unset($availableCharacters[($rosterCharacter->character_id)-1]) @endphp
 @endforeach
 
 <x-layout>
     @include('_header')
-    <div class="container inline-flex">
-        {{-- LEFT COLUMN --}}
-        <div class="side-col">
-            {{-- LEFT TITLE --}}
-            <div class="text-center text-white">
-                Roster ({{ count($characters) }} Active)
-            </div>
-            @foreach ($characters as $character)
-                <x-character-card :character="$character" />
-            @endforeach
-        </div>
-
-        {{-- MAIN COLUMN --}}
-        <div class="main-col">
+    <div class="container mx-auto">                
+        <div class="grid grid-cols-10 gap-6">
             {{-- RAID TITLE; CURRENTLY CLICK TO EDIT - POSSIBLY REFACTOR TO TABLE IN FUTURE TO STORE RAIDS INCL. NAMES AND SETUPS --}}
-            <div class="text-center text-white">
-                <input value="Raid Name" type="text" style="text-align: center; background-color: hsl(175, 20%, 5%)" />
+            <input value="Lorem Ipsum (Placeholder)" type="text" class="label col-span-10"/>
+            {{-- LEFT COLUMN --}}
+            <div class="w-full col-span-3">
+                {{-- TITLE --}}
+                <div class="label">
+                    Roster ({{ count($characters) }} Active)
+                </div>
+
+                {{-- DATA --}}
+                @foreach ($characters as $character)
+                    <x-character-card :character="$character" />
+                @endforeach
             </div>
 
-            {{-- FOR EVERY GROUP (i) --}}
-            @for ($i = 0; $i < $groups; $i++)
-                <div class="group-col">
-                    @if (($i+1)==$groups) {{-- LAST GROUP == BACKUP --}}
-                        Backup:
-                    @endif
-
-                    {{-- FOR EVERY PLAYER (j) IN ROSTER --}}
-                    @for ($j; $j < count($raidRoster); $j++)
-                        <div class="relative inline-flex bg-gray-100 rounded-xl mt-2">
-                            {{-- CREATE DROPDOWN BUTTON --}}
-                            <x-dropdown>
-                                <x-slot name="trigger">
-                                        <button
-                                        class="py-1 pl-1 text-sm font-semibold w-full md:w-36 lg:w-36 text-left flex lg:inline-flex text-black rounded-xl outline border border-black"
-                                        style="background-color: {{ $raidRoster[$j]->character->ms->class->color }}">
-
-                                        <div class="specc inline-block opacity-90">
-                                            <img src="/images/icons/{{ $raidRoster[$j]->character->ms->name }}.jpg" alt="Main Specialization (MS)">
-                                        </div>
-                                        
-                                        <div class="pl-2 pt-1">
-                                            {{ isset($raidRoster[$j]->character->name) ? ucwords($raidRoster[$j]->character->name) : 'Player' }}
-                                        </div>
-
-                                        <x-icon name="down-arrow" class="absolute pointer-events-none"
-                                            style="right: 4px;" />
-                                    </button>
-                                </x-slot>
-                                
-                                {{-- DROPDOWN ITEMS --}}
-                                @foreach ($availableCharacters as $character)
-                                    <x-dropdown-item :index="$j" :character="$character"
-                                        :active="isset($currentCategory) && $currentCategory->is($character)">
-                                        {{ ucwords($character->name) }} ({{$character->ms->class->name}})
-                                    </x-dropdown-item>
-                                @endforeach
-                            </x-dropdown>
-                        </div>
-
-                        {{-- GROUP IS FULL -> BREAK FOR NEXT GROUP --}}
-                        @if(($j+1)%5 == 0)
-                            @php($j++)
-                            @break
+            {{-- MAIN COLUMN --}}
+            <div class="w-full col-span-4">
+                {{-- FOR EVERY GROUP (i) --}}
+                @for ($i = 0; $i < $groups; $i++)
+                        @if ($i + 1 == $groups)
+                            {{-- LAST GROUP == BACKUP --}}
+                            <div class="label">
+                                Backup
+                            </div>
+                        @else
+                            <div class="label">
+                                Group {{ $i+1 }}
+                            </div>
                         @endif
-                    @endfor
+
+                        {{-- FOR EVERY PLAYER (j) IN ROSTER --}}
+                        @for ($j; $j < count($raidRoster); $j++)
+                            <div class="flex justify-center">
+                                {{-- CREATE DROPDOWN BUTTON --}}
+                                <x-dropdown>
+                                    <x-slot name="trigger">
+                                        <button
+                                            class="relative inline-flex text-sm font-semibold w-full md:w-56 lg:w-56 text-left text-black rounded-xl outline border border-black"
+                                            style="background-color: {{ $raidRoster[$j]->character->ms->class->color }}">
+
+                                            <div class="specc inline-block opacity-90">
+                                                <img src="/images/icons/{{ $raidRoster[$j]->character->ms->name }}.jpg"
+                                                    alt="Main Specialization (MS)">
+                                            </div>
+
+                                            <div class="pl-1 pt-1.5">
+                                                {{ isset($raidRoster[$j]->character->name) ? ucwords($raidRoster[$j]->character->name) : 'Player' }}
+                                            </div>
+
+                                            <x-icon name="down-arrow" class="absolute pointer-events-none mt-1"
+                                                style="right: 4px;" />
+                                        </button>
+                                    </x-slot>
+
+                                    {{-- DROPDOWN ITEMS --}}
+                                    @foreach ($availableCharacters as $character)
+                                        <x-dropdown-item :index="$j" :character="$character"
+                                            :active="isset($currentCategory) && $currentCategory->is($character)">
+                                            {{ ucwords($character->name) }} ({{ $character->ms->class->name }})
+                                        </x-dropdown-item>
+                                    @endforeach
+                                </x-dropdown>
+                            </div>
+
+                            {{-- GROUP IS FULL -> BREAK FOR NEXT GROUP --}}
+                            @if (($j + 1) % 5 == 0)
+                                @php($j++)
+                                @break
+                            @endif
+                        @endfor
+                @endfor
+            </div>
+
+            <div class="w-full col-span-3">
+                <div class="label">
+                    Buffs
                 </div>
-            @endfor
-            
-            <div class="group-col">
-                <div class="text-center text-white pb-2">
+
+                <div class="text-white text-xs">
+                    @foreach ($effects as $effect)
+                            {{-- display effect title --}}
+                            <div class="col-span-2 pt-2 font-bold">
+                                {{ $effect->name }}
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+
+                            {{-- assign buffs based on index (active roster size) based on class/specc --}}
+                            @for ($i = 0; $i < 10; $i++)
+                                @foreach ($buffs as $buff)
+                                    @if ($buff->effect == $effect->id  && !$effect->assigned)
+                                        {{-- CLASS_REQ FOR BUFF MATCHES ROSTERINDEX CLASS & INDEX IS NOT ASSIGNED A BUFF --}}
+                                        @if ($raidRoster[$i]->character->ms->wowclass_id == $buff->req_class && !$raidRoster[$i]->buff_assigned)
+                                            {{-- display and assign --}}
+                                            <div class="">
+                                                {{ $raidRoster[$i]->character->name }}
+                                            </div>
+                                            <div class="">
+                                                {{ $buff->name }}
+                                            </div>
+                                            @php ($raidRoster[$i]->buff_assigned = 1)
+                                            @php ($effect->assigned = 1)
+                                            @break
+                                        {{-- SPECC_REQ FOR BUFF MATCHES ROSTERINDEX SPECC & INDEX IS NOT ASSIGNED A BUFF --}}
+                                        @elseif ($raidRoster[$i]->character->ms->id == $buff->req_specc && !$raidRoster[$i]->buff_assigned)
+                                            {{-- display and assign --}}
+                                            <div class="">
+                                                {{ $raidRoster[$i]->character->name }}
+                                            </div>
+                                            <div class="">
+                                                {{ $buff->name }}
+                                            </div>                               
+                                            @php ($raidRoster[$i]->buff_assigned = 1)
+                                            @php ($effect->assigned = 1)
+                                            @break
+                                        @else
+                                            {{-- INSERT MISSING BUFF FEEDBACK --}}
+                                        @endif
+                                    @endif
+                                @endforeach
+                            @endfor
+                        </div>
+                    @endforeach
+                </div>
+
+                <div class="label">
+                    Debuffs
+                </div>
+
+                <div class="label">
                     Out:
                 </div>
-                @foreach($availableCharacters as $character)
+
+                @foreach ($availableCharacters as $character)
                     <div>
                         {{ $character->name }}
                     </div>
                 @endforeach
             </div>
         </div>
+    </div>
 
-        {{-- RIGHT COLUMN PLACEHOLDER --}}
-        <div class="side-col">
-            {{-- RIGHT TITLE --}}
-            <div class="text-center text-white">
-                Buffs/Debuffs
-            </div>
-        </div>
-
-        @include('_footer')
+@include('_footer')
 </x-layout>

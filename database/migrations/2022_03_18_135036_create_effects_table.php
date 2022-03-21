@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBuffsTable extends Migration
+class CreateEffectsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateBuffsTable extends Migration
      */
     public function up()
     {
-        Schema::create('buffs', function (Blueprint $table) {
+        Schema::create('effects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('effect');
-            $table->foreignId('req_specc')->nullable()->references('id')->on('specs');
-            $table->foreignId('req_class')->nullable()->references('id')->on('wowclasses');
+            $table->boolean('assigned');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateBuffsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buffs');
+        Schema::dropIfExists('effects');
     }
 }

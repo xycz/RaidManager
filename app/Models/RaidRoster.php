@@ -15,14 +15,4 @@ class RaidRoster extends Model
     {
         return $this->belongsTo(Character::class, 'character_id');
     }
-
-    public function backup()
-    {
-        return $this->belongsTo(Character::class, 'is_backup');
-    }
-
-    public function assigned()
-    {
-        return $this->belongsTo(Character::class, 'buff_assigned');
-    }
 }

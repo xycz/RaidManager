@@ -1,7 +1,7 @@
 :root {
-    --bgcolor: hsl(175, 24%, 5%);
+    --bgcolor: hsl(355, 32%, 8%);
     --footer: hsl(175, 3%, 3%);
-    --highlight: rgb(64, 75, 227);
+    --highlight: hsl(333, 64%, 42%);
 }
 
 body {
@@ -93,39 +93,21 @@ footer {
     border-top: 3px solid var(--highlight);
 }
 
-.container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: row nowrap;
-}
-
 .name {
     width: 72%;
 }
 
-.side-col {
-    color: #000;
-    width:25%;
-    margin-right: 2rem;
-    margin-left: 2rem;
-}
-
-.main-col {
-    width: 50%;
-}
-
-.group-col {
-    margin-top: 1rem;
+.label {
+    font-weight: bold;
+    background-color: var(--bgcolor);
+    color: #eee;
     text-align: center;
-    width: 49%;
-    display: inline-block;
-    vertical-align:top
+    margin-bottom: 4px;
+    margin-top: 4px;
 }
 
 .specc {
-    margin-top: 1px;
-    margin-bottom: 1px;
-    margin-right: 1px;
+    margin: 2px;
     max-width:30px;
     max-height:30px;
 }
