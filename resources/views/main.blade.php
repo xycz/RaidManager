@@ -21,6 +21,18 @@ $j = 0;
                     Roster ({{ count($characters) }} Active)
                 </div>
 
+                <div class="grid grid-cols-6 text-center">
+                    <div class="pl-2 col-span-4">
+                        Name
+                    </div>
+                    <div class="pr-0.5">
+                        MS
+                    </div>
+                    <div class="pr-0.5">
+                        OS
+                    </div>
+                </div>
+
                 {{-- DATA --}}
                 @foreach ($characters as $character)
                     <x-character-card :character="$character" />

@@ -5,11 +5,11 @@
             {{ $character->name }}
         </div>
 
-        <div class="specc opacity-90 h-6 flex items-center justify-center">
+        <div class="specc opacity-90 h-6 flex items-end justify-end">
             <img src="/images/icons/{{ $character->ms->name }}.jpg" alt="Main Specialization (MS)" style="max-height: 100%; max-width: 100%;">
         </div>
 
-        <div class="specc opacity-90 h-6 flex items-center justify-center">
+        <div class="specc opacity-90 h-6 flex items-end justify-end">
             <img src="/images/icons/{{ $character->os->name }}.jpg" alt="Off Specialization (OS)" style="max-height: 100%; max-width: 100%;">
         </div>
     </div>
