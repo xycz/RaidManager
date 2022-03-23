@@ -3,6 +3,7 @@
 <head>
     <title>Raid Manager</title>
     
+    <script src="https://unpkg.com/flowbite@1.4.1/dist/datepicker.js"></script>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="app.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">

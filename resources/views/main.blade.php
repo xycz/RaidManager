@@ -12,14 +12,19 @@ $j = 0;
     @include('_header')
     <div class="container mx-auto">                
         <div class="grid grid-cols-10 gap-6">
-            {{-- RAID TITLE; CURRENTLY CLICK TO EDIT - POSSIBLY REFACTOR TO TABLE IN FUTURE TO STORE RAIDS INCL. NAMES AND SETUPS --}}
-            <input value="Lorem Ipsum (Placeholder)" type="text" class="label col-span-10"/>
-            {{-- LEFT COLUMN --}}
-            <div class="w-full col-span-3">
-                {{-- TITLE --}}
+            <div class="col-span-3">
                 <div class="label">
                     Roster ({{ count($characters) }} Active)
                 </div>
+            </div>
+            {{-- RAID TITLE; CURRENTLY CLICK TO EDIT - POSSIBLY REFACTOR TO TABLE IN FUTURE TO STORE RAIDS INCL. NAMES AND SETUPS --}}
+            <input value="Lorem Ipsum (Placeholder)" type="text" class="label col-span-4"/>
+            {{-- LEFT COLUMN --}}
+            <div class="col-span-3">
+                <x-datepicker />
+            </div>
+
+            <div class="w-full col-span-3">
 
                 <div class="grid grid-cols-6 text-center">
                     <div class="pl-2 col-span-4">
