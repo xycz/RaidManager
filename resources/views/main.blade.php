@@ -13,12 +13,12 @@ $j = 0;
     <div class="container mx-auto">                
         <div class="grid grid-cols-10 gap-6">
             <div class="col-span-3">
-                <div class="label">
+                <div class="label text-center pt-2">
                     Roster ({{ count($characters) }} Active)
                 </div>
             </div>
             {{-- RAID TITLE; CURRENTLY CLICK TO EDIT - POSSIBLY REFACTOR TO TABLE IN FUTURE TO STORE RAIDS INCL. NAMES AND SETUPS --}}
-            <input value="Lorem Ipsum (Placeholder)" type="text" class="label col-span-4"/>
+            <input value="Lorem Ipsum (Placeholder)" type="text" class="label col-span-4 text-center"/>
             {{-- LEFT COLUMN --}}
             <div class="col-span-3">
                 <x-datepicker />
@@ -26,14 +26,14 @@ $j = 0;
 
             <div class="w-full col-span-3">
 
-                <div class="grid grid-cols-6 text-center">
+                <div class="grid grid-cols-6 text-center pt-1">
                     <div class="pl-2 col-span-4">
                         Name
                     </div>
-                    <div class="pr-0.5">
+                    <div class="pr-1">
                         MS
                     </div>
-                    <div class="pr-0.5">
+                    <div class="pr-1">
                         OS
                     </div>
                 </div>
@@ -50,11 +50,11 @@ $j = 0;
                 @for ($i = 0; $i < $groups; $i++)
                         @if ($i + 1 == $groups)
                             {{-- LAST GROUP == BACKUP --}}
-                            <div class="label">
+                            <div class="label text-center">
                                 Backup
                             </div>
                         @else
-                            <div class="label">
+                            <div class="label text-center">
                                 Group {{ $i+1 }}
                             </div>
                         @endif
@@ -103,7 +103,7 @@ $j = 0;
             </div>
 
             <div class="w-full col-span-3">
-                <div class="label">
+                <div class="label text-center">
                     Buffs
                 </div>
 
@@ -153,11 +153,11 @@ $j = 0;
                     @endforeach
                 </div>
 
-                <div class="label">
+                <div class="label text-center">
                     Debuffs
                 </div>
 
-                <div class="label">
+                <div class="label text-center">
                     Out:
                 </div>
 
