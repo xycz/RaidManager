@@ -19,7 +19,7 @@ class CharacterFactory extends Factory
             'ms_id' => Spec::factory(),
             'os_id' => Spec::factory(),
             'user_id' => User::factory(),
-            'name'  =>  ucfirst($this->faker->firstName()),
+            'name'  =>  ucfirst($this->faker->name),
         ];
     }
 }

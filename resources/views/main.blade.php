@@ -103,7 +103,7 @@ $j = 0;
             </div>
 
             <div class="w-full col-span-3">
-                <div class="label text-center">
+                <div class="label">
                     Buffs
                 </div>
 

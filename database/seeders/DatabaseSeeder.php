@@ -100,7 +100,8 @@ class DatabaseSeeder extends Seeder
         for($i=0; $i<$arr_length; $i++)
         {
             Effect::factory()->create([
-                'name' => $effect_data[$i]
+                'name' => $effect_data[$i][0],
+                'slug' => $effect_data[$i][1]
             ]);
         }
         print("Seeded: Effects" . chr(10));
@@ -157,14 +158,16 @@ class DatabaseSeeder extends Seeder
     public function generateEffectArray()
     {
         
-        $effect_data = array( "+10% Attack Power",
-                                "+10% Attack Speed",
-                                "+10% Spell Power",
-                                "+5% Critical Strike Chance",
-                                "+3000 Mastery Rating",
-                                "+5% Strength, Agility, Intellect",
-                                "+5% Spell Haste",
-                                "+10% Stamina");
+        $effect_data = array();
+        /*                      NAME                    SLUG          */
+        $effect_data[] = array("+10% Attack Power",                 "inv_misc_horn_02");
+        $effect_data[] = array("+10% Attack Speed",                 "inv_helmet_08");
+        $effect_data[] = array("+10% Spell Power",                  "spell_holy_magicalsentry");
+        $effect_data[] = array("+5% Critical Strike Chance",        "ability_monk_prideofthetiger");
+        $effect_data[] = array("+3000 Mastery Rating",              "spell_holy_greaterblessingofkings");
+        $effect_data[] = array("+5% Strength, Agility, Intellect",  "spell_magic_greaterblessingofkings");
+        $effect_data[] = array("+5% Spell Haste",                   "spell_shadow_spectralsight");
+        $effect_data[] = array("+10% Stamina",                      "spell_holy_wordfortitude");
 
         return $effect_data;
     }

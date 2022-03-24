@@ -17,6 +17,7 @@ class CreateEffectsTable extends Migration
             $table->id();
             $table->string('name');
             $table->boolean('assigned');
+            $table->string('slug');
             $table->timestamps();
         });
     }
