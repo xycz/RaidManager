@@ -162,9 +162,7 @@ $j = 0;
                 </div>
 
                 @foreach ($availableCharacters as $character)
-                    <div>
-                        {{ $character->name }}
-                    </div>
+                        <x-character-card :character="$character" />
                 @endforeach
             </div>
         </div>
