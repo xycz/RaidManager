@@ -26,14 +26,14 @@ $j = 0;
 
             <div class="w-full col-span-3">
 
-                <div class="grid grid-cols-6 text-center pt-1">
-                    <div class="pl-2 col-span-4">
+                <div class="grid grid-cols-6 text-center">
+                    <div class="pl-2 col-span-4 label">
                         Name
                     </div>
-                    <div class="pr-1">
+                    <div class="pr-1 label">
                         MS
                     </div>
-                    <div class="pr-1">
+                    <div class="pr-1 label">
                         OS
                     </div>
                 </div>
