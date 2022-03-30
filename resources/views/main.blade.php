@@ -40,7 +40,7 @@ $j = 0;
 
                 {{-- DATA --}}
                 @foreach ($characters as $character)
-                    <x-character-card :character="$character" />
+                    <x-character.card :character="$character" />
                 @endforeach
             </div>
 
@@ -63,7 +63,7 @@ $j = 0;
                         @for ($j; $j < count($raidRoster); $j++)
                             <div class="flex justify-center">
                                 {{-- CREATE DROPDOWN BUTTON --}}
-                                <x-dropdown>
+                                <x-character.dropdown>
                                     <x-slot name="trigger">
                                         <button
                                             class="relative inline-flex text-sm font-semibold w-full md:w-56 lg:w-56 text-left text-black rounded-xl outline border border-black"
@@ -85,12 +85,12 @@ $j = 0;
 
                                     {{-- DROPDOWN ITEMS --}}
                                     @foreach ($availableCharacters as $character)
-                                        <x-dropdown-item :index="$j" :character="$character"
+                                        <x-character.dropdown-item :index="$j" :character="$character"
                                             :active="isset($currentCategory) && $currentCategory->is($character)">
                                             {{ ucwords($character->name) }} ({{ $character->ms->class->name }})
-                                        </x-dropdown-item>
+                                        </x-character.dropdown-item>
                                     @endforeach
-                                </x-dropdown>
+                                </x-character.dropdown>
                             </div>
 
                             {{-- GROUP IS FULL -> BREAK FOR NEXT GROUP --}}
@@ -125,7 +125,7 @@ $j = 0;
                 </div>
 
                 @foreach ($availableCharacters as $character)
-                        <x-character-card :character="$character" />
+                        <x-character.card :character="$character" />
                 @endforeach
             </div>
         </div>

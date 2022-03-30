@@ -1,5 +1,5 @@
 <x-layout>
-    <footer class="thick-border-top" id="hideme">
+    <footer class="thick-border-top">
         <div class="footer-icons">
             <div class="block">
                 <a href="https://github.com/xycz/RaidManager" class="pt-2" target="_blank">
