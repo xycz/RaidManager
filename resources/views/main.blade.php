@@ -10,7 +10,7 @@ $j = 0;
 
 <x-layout>
     @include('_header')
-    <div class="container mx-auto">                
+    <div class="container mx-auto">  
         <div class="grid grid-cols-10 gap-6">
             <div class="col-span-3">
                 <div class="label text-center pt-2">
